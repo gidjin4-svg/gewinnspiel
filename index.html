@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teilnahmebedingungen – Gewinnspiel | Grow-Leif</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Rum+Raisin&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      background: #fff;
+      color: #222;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid #e0e0e0;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    header img { height: 110px; width: auto; mix-blend-mode: multiply; }
+    header .site-name { font-family: 'Rum Raisin', serif; font-size: 28px; color: #1e4d2b; letter-spacing: 1px; }
+
+    /* Content */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1e4d2b;
+      margin-bottom: 6px;
+    }
+    .meta {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 36px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1e4d2b;
+      margin: 28px 0 8px;
+    }
+
+    p { margin-bottom: 12px; color: #333; }
+    ul, ol { margin: 8px 0 12px 22px; }
+    li { margin-bottom: 4px; }
+
+    a { color: #2d7a3e; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .info-row {
+      display: flex;
+      gap: 24px;
+      margin: 12px 0 16px;
+    }
+    .info-item {
+      background: #f5f5f5;
+      border-radius: 4px;
+      padding: 12px 18px;
+      font-size: 13px;
+    }
+    .info-item .label { color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+    .info-item .val { font-weight: 700; color: #1e4d2b; }
+
+    /* Footer links */
+    .page-footer {
+      border-top: 1px solid #e0e0e0;
+      margin-top: 60px;
+      padding-top: 20px;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 0;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: #555;
+      padding: 4px 14px 4px 0;
+      border-right: 1px solid #ddd;
+      margin-right: 14px;
+      cursor: pointer;
+    }
+    .footer-links a:last-child { border-right: none; }
+    .footer-links a:hover { color: #1e4d2b; text-decoration: underline; }
+    .footer-links a.active { color: #1e4d2b; font-weight: 700; }
+
+    /* Expandable sections */
+    .expand-section {
+      display: none;
+      background: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+    .expand-section.open { display: block; }
+
+    .expand-header {
+      background: #1e4d2b;
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .expand-header button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+    }
+    .expand-header button:hover { opacity: 1; }
+
+    .expand-body {
+      padding: 24px 28px;
+      max-height: 480px;
+      overflow-y: auto;
+      font-size: 13.5px;
+      line-height: 1.75;
+    }
+    .expand-body h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e4d2b;
+      margin: 20px 0 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .expand-body h3:first-child { margin-top: 0; }
+    .expand-body p { font-size: 13.5px; margin-bottom: 8px; }
+    .expand-body ul { margin: 4px 0 10px 20px; }
+    .expand-body li { font-size: 13.5px; margin-bottom: 3px; }
+
+    .footer-copy {
+      margin-top: 28px;
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    /* Timer Bar */
+    .timer-bar {
+      background: #1e4d2b;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px 24px;
+      flex-wrap: wrap;
+    }
+    .timer-label { font-size: 13px; color: #a8dba8; font-weight: 600; }
+    .timer-end   { font-size: 12px; color: #7abd7a; }
+    .timer-blocks { display: flex; align-items: center; gap: 6px; }
+    .timer-block {
+      background: rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 5px 10px;
+      text-align: center;
+      min-width: 46px;
+    }
+    .timer-block span { font-size: 18px; font-weight: 700; display: block; line-height: 1.2; }
+    .timer-block small { font-size: 10px; color: #9fcf9f; letter-spacing: 0.5px; text-transform: uppercase; }
+    .timer-sep { font-size: 18px; font-weight: 700; color: #7abd7a; margin-bottom: 10px; }
+    .timer-done { font-size: 14px; font-weight: 700; color: #ffcc00; }
+
+    @media (max-width: 600px) {
+      .container { padding: 32px 20px 60px; }
+      header { padding: 14px 20px; }
+      .info-row { flex-direction: column; gap: 10px; }
+      .timer-label, .timer-end { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo 2.jpg" alt="Grow-Leif Logo" />
+    <span class="site-name">Grow-Leif</span>
+  </header>
+
+  <div class="timer-bar">
+    <span class="timer-label">Gewinnspiel endet in</span>
+    <div class="timer-blocks">
+      <div class="timer-block"><span id="timer-d">--</span><small>Tage</small></div>
+      <div class="timer-sep">:</div>
+      <div class="timer-block"><span id="timer-h">--</span><small>Std</small></div>
+      <div class="timer-sep">:</div>
+      <div class="timer-block"><span id="timer-m">--</span><small>Min</small></div>
+      <div class="timer-sep">:</div>
+      <div class="timer-block"><span id="timer-s">--</span><small>Sek</small></div>
+    </div>
+    <span class="timer-end">bis 30. April · 20:00 Uhr</span>
+  </div>
+
+  <div class="container">
+
+    <!-- Giveaway Bild -->
+    <div style="padding: 6px; background: linear-gradient(135deg, #1e4d2b, #4caf60, #1e4d2b); border-radius: 10px; margin-bottom: 36px; box-shadow: 0 4px 20px rgba(30,77,43,0.25);">
+      <img src="Gewinnspiel.png" alt="420 Giveaway Gewinnspiel – Grow-Leif x Hybrid Supreme Filters"
+           style="width:100%; border-radius:6px; display:block;" />
+    </div>
+
+    <h1>Teilnahmebedingungen</h1>
+    <p class="meta">420 Gewinnspiel – Grow-Leif x @hybrid.supreme.filters &nbsp;·&nbsp; Stand: April 2025</p>
+
+    <h2>§ 1 Veranstalter</h2>
+    <p>
+      Veranstalter des Gewinnspiels ist Grow-Leif, Wilhelm-Leuschner-Str. 3, 58099 Hagen,
+      in Kooperation mit <strong>@hybrid.supreme.filters</strong>.
+      Das Gewinnspiel steht in keiner Verbindung zu Instagram und wird von Instagram
+      in keiner Weise gesponsert, unterstützt oder organisiert.
+    </p>
+
+    <h2>§ 2 Teilnahmezeitraum</h2>
+    <div class="info-row">
+      <div class="info-item">
+        <div class="label">Start</div>
+        <div class="val">21. April 2025</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Ende</div>
+        <div class="val">30. April 2025, 20:00 Uhr</div>
+      </div>
+    </div>
+    <p>Die Teilnahme ist nur innerhalb des angegebenen Zeitraums möglich.</p>
+
+    <h2>§ 3 Teilnahmeberechtigung</h2>
+    <p>Teilnahmeberechtigt sind natürliche Personen, die</p>
+    <ul>
+      <li>mindestens <strong>18 Jahre</strong> alt sind,</li>
+      <li>ihren Wohnsitz in der <strong>Bundesrepublik Deutschland 🇩🇪</strong> haben,</li>
+      <li>nicht Mitarbeiter des Veranstalters oder deren Angehörige sind.</li>
+    </ul>
+    <p>Die Teilnahme über Fake-Accounts, automatisierte Dienste oder Mehrfachaccounts ist ausgeschlossen.</p>
+
+    <h2>§ 4 Teilnahme – So machst du mit</h2>
+    <ol>
+      <li>Folge <strong>@grow.leif.eu</strong> &amp; <strong>@hybrid.supreme.filters</strong> auf Instagram</li>
+      <li>Like unseren <a href="https://www.instagram.com/grow.leif.eu/" target="_blank" rel="noopener">Gewinnspielbeitrag auf Instagram</a></li>
+      <li>Markiere <strong>2 Freunde</strong> in den Kommentaren</li>
+    </ol>
+    <p>Jede Person darf nur <strong>einmal</strong> teilnehmen. Mehrfachteilnahmen werden nicht berücksichtigt.</p>
+
+    <h2>§ 5 Gewinne</h2>
+    <p>Es werden <strong>3 Gewinnpakete</strong> verlost:</p>
+
+    <p><strong>1. Platz:</strong></p>
+    <ul>
+      <li>Hybrid Socken (schwarz)</li>
+      <li>Hybrid Supreme Filters 250er Beutel (bunt gemischt)</li>
+      <li>Hybrid Rolling Tray</li>
+      <li>Hybrid Clipper Leash</li>
+      <li>Hybrid Papes (32 Blatt)</li>
+      <li>RQS Easy Boost 100g</li>
+      <li>RQS Bio Bloom Fertiliser 250ml</li>
+      <li>RQS Pocket Ashtray</li>
+      <li>RQS Eco Grinder</li>
+      <li>RQS 5x Wedding Cake feminisiert <em>(Sammlerstück)</em></li>
+      <li>Barneys Farm 10x Laughing Buddha feminisiert <em>(Sammlerstück)</em></li>
+      <li>Grow-Leif 5x AK47 Auto <em>(Sammlerstück)</em></li>
+      <li>Grow-Leif Wurzelhonig</li>
+      <li>Carson MM280G 20x Lupe</li>
+      <li>Clipper (4x Mix 420 Edition)</li>
+    </ul>
+
+    <p><strong>2. Platz:</strong></p>
+    <ul>
+      <li>Hybrid Filter + Rolls Kombipack</li>
+      <li>Hybrid Clipper Leash</li>
+      <li>Hybrid Rolling Tray</li>
+      <li>Hybrid Papes</li>
+      <li>RQS Pocket Ashtray</li>
+      <li>RQS Eco Grinder</li>
+      <li>RQS 5x Wedding Cake feminisiert <em>(Sammlerstück)</em></li>
+      <li>RQS 2x Easy Combo Ferttabs</li>
+      <li>Barneys Farm 5x Purple Punch Auto <em>(Sammlerstück)</em></li>
+      <li>Grow-Leif 3x AK47 Auto <em>(Sammlerstück)</em></li>
+      <li>Clipper (2x Mix „Welcome to Earth")</li>
+    </ul>
+
+    <p><strong>3. Platz:</strong></p>
+    <ul>
+      <li>Hybrid Papes (32 Blatt)</li>
+      <li>RQS Pocket Ashtray</li>
+      <li>RQS Eco Grinder</li>
+      <li>RQS 5x Wedding Cake feminisiert <em>(Sammlerstück)</em></li>
+      <li>Barneys Farm 3x Liberty Haze feminisiert <em>(Sammlerstück)</em></li>
+      <li>Grow-Leif 1x AK47 Auto <em>(Sammlerstück)</em></li>
+    </ul>
+
+    <p style="font-size:13px; color:#888; margin-top:8px;">
+      Alle enthaltenen Samen werden ausschließlich als <strong>Sammlerstücke / Souvenirs</strong> abgegeben.
+      Es erfolgt keine Aufforderung zum Anbau. Es gelten die jeweils aktuellen gesetzlichen Bestimmungen
+      (insbesondere CanG / KCanG).
+    </p>
+
+    <h2>§ 6 Gewinnermittlung &amp; Benachrichtigung</h2>
+    <p>
+      Die Gewinner werden nach Ablauf des Aktionszeitraums per <strong>Zufallsprinzip</strong> aus allen
+      berechtigten Teilnehmern ermittelt und per <strong>Instagram-Direktnachricht (DM)</strong> benachrichtigt.
+      Die Gewinner haben <strong>14 Tage</strong> Zeit, sich zu melden — andernfalls wird ein Ersatzgewinner gezogen.
+    </p>
+
+    <h2>§ 7 Datenschutz</h2>
+    <p>
+      Zur Teilnahme erhobene Daten (Instagram-Nutzername) werden ausschließlich zur Durchführung
+      des Gewinnspiels genutzt und danach gelöscht. Es erfolgt keine Weitergabe an Dritte.
+      Details findest du in unserer <a href="#" onclick="openSection('datenschutz'); return false;">Datenschutzerklärung</a>.
+    </p>
+
+    <h2>§ 8 Haftungsausschluss</h2>
+    <p>
+      Der Veranstalter haftet nicht für technische Störungen, Übertragungsfehler oder andere
+      außerhalb seines Einflussbereichs liegende Umstände, die die Teilnahme beeinträchtigen.
+    </p>
+
+    <h2>§ 9 Änderung &amp; Abbruch</h2>
+    <p>
+      Der Veranstalter behält sich vor, das Gewinnspiel bei triftigem Grund jederzeit zu
+      ändern, zu verlängern oder abzubrechen.
+    </p>
+
+    <h2>§ 10 Sonstiges</h2>
+    <p>
+      Es gilt das Recht der Bundesrepublik Deutschland. Unwirksame Einzelbestimmungen
+      berühren die Gültigkeit der übrigen Bedingungen nicht.
+    </p>
+
+    <!-- FOOTER LINKS -->
+    <div class="page-footer">
+      <div class="footer-links">
+        <a href="https://www.grow-leif.de/l/contact" target="_blank">Impressum</a>
+        <a onclick="toggleSection('datenschutz', this)" id="link-datenschutz">Datenschutz</a>
+        <a onclick="toggleSection('cang', this)" id="link-cang">CAnG</a>
+        <a onclick="toggleSection('kcang', this)" id="link-kcang">KCanG</a>
+      </div>
+
+      <!-- Datenschutz -->
+      <div class="expand-section" id="sec-datenschutz">
+        <div class="expand-header">
+          Datenschutzerklärung
+          <button onclick="toggleSection('datenschutz', document.getElementById('link-datenschutz'))">✕</button>
+        </div>
+        <div class="expand-body">
+          <h3>1. Verantwortlicher</h3>
+          <p>Grow-Leif, Wilhelm-Leuschner-Str. 3, 58099 Hagen<br />
+          E-Mail: <a href="mailto:kundensupport@grow-leif.de">kundensupport@grow-leif.de</a></p>
+
+          <h3>2. Welche Daten wir erheben</h3>
+          <ul>
+            <li>Name (Vor- und Nachname)</li>
+            <li>Kontaktdaten (E-Mail oder Adresse zur Gewinnerbenachrichtigung)</li>
+            <li>ggf. Social-Media-Nutzername</li>
+          </ul>
+
+          <h3>3. Zweck und Rechtsgrundlage</h3>
+          <p>Die Daten werden ausschließlich zur Durchführung des Gewinnspiels und Gewinnerbenachrichtigung
+          verwendet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b und lit. a DSGVO.</p>
+
+          <h3>4. Speicherdauer</h3>
+          <p>Deine Daten werden nach Abschluss des Gewinnspiels (spätestens 90 Tage nach Ende) gelöscht.</p>
+
+          <h3>5. Weitergabe an Dritte</h3>
+          <p>Keine Weitergabe, außer an Versanddienstleister zur Zustellung des Gewinns.</p>
+
+          <h3>6. Deine Rechte</h3>
+          <ul>
+            <li>Auskunft (Art. 15 DSGVO)</li>
+            <li>Berichtigung (Art. 16 DSGVO)</li>
+            <li>Löschung (Art. 17 DSGVO)</li>
+            <li>Einschränkung (Art. 18 DSGVO)</li>
+            <li>Widerspruch (Art. 21 DSGVO)</li>
+            <li>Widerruf einer Einwilligung (Art. 7 Abs. 3 DSGVO)</li>
+          </ul>
+          <p>Anfragen an: <a href="mailto:kundensupport@grow-leif.de">kundensupport@grow-leif.de</a></p>
+        </div>
+      </div>
+
+      <!-- CAnG -->
+      <div class="expand-section" id="sec-cang">
+        <div class="expand-header">
+          CAnG – Gesetz zum Umgang mit Cannabisanbauvereinigungen
+          <button onclick="toggleSection('cang', document.getElementById('link-cang'))">✕</button>
+        </div>
+        <div class="expand-body">
+          <h3>§ 1 Begriffsbestimmungen</h3>
+          <p>Eine <strong>Anbauvereinigung</strong> ist ein eingetragener, nicht wirtschaftlicher Verein oder eine eingetragene Genossenschaft mit Sitz im Inland, dessen Mitglieder gemeinschaftlich Cannabis für den Eigenbedarf anbauen und untereinander zum Eigenkonsum weitergeben.</p>
+
+          <h3>§ 2 Erlaubnispflicht</h3>
+          <p>Der Anbau durch eine Anbauvereinigung sowie die Weitergabe an Mitglieder bedürfen einer Erlaubnis der zuständigen Behörde.</p>
+
+          <h3>§ 3 Mitgliedschaft</h3>
+          <p>Mitglied kann nur sein, wer das 18. Lebensjahr vollendet hat, Wohnsitz im Inland hat und nicht gleichzeitig Mitglied einer anderen Anbauvereinigung ist. Eine Vereinigung darf nicht mehr als <strong>500 Mitglieder</strong> haben.</p>
+
+          <h3>§ 4 Zweck</h3>
+          <p>Cannabis darf ausschließlich für den Eigenkonsum der Mitglieder angebaut und weitergegeben werden. Jede gewerbliche Tätigkeit oder Gewinnerzielungsabsicht ist untersagt.</p>
+
+          <h3>§ 5 Schutz Minderjähriger</h3>
+          <p>Minderjährige dürfen keinen Zugang zu Cannabis oder Anbauflächen erhalten. Die Weitergabe an Minderjährige ist verboten.</p>
+
+          <h3>§ 6 Werbeverbot</h3>
+          <p>Jede Werbung für Anbauvereinigungen oder für Cannabis ist verboten — auch in sozialen Medien.</p>
+
+          <h3>§ 8 Sozial- und Gesundheitskonzept</h3>
+          <p>Anbauvereinigungen müssen ein Sozial- und Gesundheitskonzept umsetzen. Mindestens eine Person muss eine Suchtpräventionsschulung absolviert haben.</p>
+
+          <h3>§ 11 Weitergabe an Mitglieder</h3>
+          <p>Höchstmengen pro Kalendermonat:</p>
+          <ul>
+            <li>Ab 21 Jahren: <strong>50 g</strong></li>
+            <li>18 bis unter 21 Jahren: <strong>30 g</strong>, max. 10 % THC</li>
+          </ul>
+          <p>Pro Tag darf nicht mehr als <strong>25 g</strong> weitergegeben werden. Mitgliedschaft mindestens 1 Monat Voraussetzung.</p>
+
+          <h3>§ 12 Anbau und Lagerung</h3>
+          <p>Cannabis darf nur in gesicherten, für Unbefugte nicht zugänglichen Bereichen angebaut und gelagert werden.</p>
+
+          <h3>§ 19 Ordnungswidrigkeiten</h3>
+          <p>Verstöße (Anbau ohne Erlaubnis, Weitergabe an Minderjährige, Überschreitung der Mengen, Werbeverbot) können mit Bußgeldern bis <strong>30.000 €</strong> geahndet werden.</p>
+        </div>
+      </div>
+
+      <!-- KCanG -->
+      <div class="expand-section" id="sec-kcang">
+        <div class="expand-header">
+          KCanG – Konsumcannabisgesetz
+          <button onclick="toggleSection('kcang', document.getElementById('link-kcang'))">✕</button>
+        </div>
+        <div class="expand-body">
+          <h3>§ 1 Begriffsbestimmungen</h3>
+          <p><strong>Cannabis</strong> im Sinne dieses Gesetzes umfasst Pflanzen und Pflanzenteile der Gattung Cannabis sowie daraus hergestellte Zubereitungen mit einem THC-Gehalt von mind. 0,3 %.</p>
+
+          <h3>§ 2 Erlaubter Umgang</h3>
+          <p>Volljährigen Personen mit Wohnsitz in Deutschland ist erlaubt:</p>
+          <ul>
+            <li>Eigenanbau von bis zu <strong>3 weiblichen Cannabispflanzen</strong> gleichzeitig</li>
+            <li>Besitz von bis zu <strong>25 g</strong> in der Öffentlichkeit</li>
+            <li>Besitz von bis zu <strong>50 g</strong> in der eigenen Wohnung</li>
+            <li>Konsum von Cannabis</li>
+          </ul>
+
+          <h3>§ 3 Besitz</h3>
+          <p>Öffentlich: max. 25 g &nbsp;·&nbsp; Privat: max. 50 g &nbsp;·&nbsp; Besitz durch Minderjährige ist strafbar.</p>
+
+          <h3>§ 4 Konsum</h3>
+          <p>Konsum ist im privaten Bereich erlaubt. Der Konsum in Anwesenheit von Personen unter 18 Jahren ist überall verboten.</p>
+
+          <h3>§ 5 Konsumverbote</h3>
+          <p>Verboten ist der Konsum:</p>
+          <ul>
+            <li>In Schulen, Kitas, Spielplätzen und in einem Umkreis von <strong>100 Metern</strong></li>
+            <li>In öffentlich zugänglichen Sportstätten</li>
+            <li>Im Straßenverkehr (als Fahrer)</li>
+            <li>In Fußgängerzonen zwischen 7 und 20 Uhr</li>
+            <li>In der Öffentlichkeit in Anwesenheit Minderjähriger</li>
+          </ul>
+
+          <h3>§ 6 Schutz Minderjähriger</h3>
+          <p>Die Abgabe an Minderjährige ist ausnahmslos verboten. Cannabis ist kindersicher aufzubewahren.</p>
+
+          <h3>§ 7 Werbeverbot</h3>
+          <p>Jede Werbung für Cannabis ist verboten — in sozialen Medien, Print, Rundfunk und als Sponsoring.</p>
+
+          <h3>§ 9 Eigenanbau</h3>
+          <p>Max. <strong>3 weibliche Pflanzen</strong> gleichzeitig, ausschließlich in der eigenen Wohnung oder im eigenen Garten, nur für den Eigenbedarf. Kein Zugang für Minderjährige.</p>
+
+          <h3>§ 10 Straßenverkehr</h3>
+          <p>Fahren unter Cannabis-Einfluss ist verboten. Ab <strong>3,5 ng/ml THC</strong> im Blutserum gilt dies als Ordnungswidrigkeit.</p>
+
+          <h3>§ 14 Straftaten</h3>
+          <p>Strafbar (bis 3 Jahre Freiheitsstrafe) ist: Besitz über erlaubte Mengen, Weitergabe an Minderjährige, unerlaubter Handel.</p>
+
+          <h3>§ 15 Ordnungswidrigkeiten</h3>
+          <p>Konsum in Verbotszonen, fehlende kindersichere Aufbewahrung und geringfügige Mengenüberschreitungen können mit bis zu <strong>30.000 €</strong> Bußgeld geahndet werden.</p>
+        </div>
+      </div>
+
+      <p class="footer-copy">&copy; 2025 Grow-Leif &nbsp;·&nbsp; Wilhelm-Leuschner-Str. 3, 58099 Hagen &nbsp;·&nbsp; <a href="mailto:kundensupport@grow-leif.de">kundensupport@grow-leif.de</a></p>
+    </div>
+
+  </div>
+
+  <script>
+    // Countdown Timer – Ende: 30. April 2025, 20:00 Uhr
+    (function() {
+      var endYear = 2025, endMonth = 3, endDay = 30, endHour = 20;
+      var end = new Date(endYear, endMonth, endDay, endHour, 0, 0);
+      var interval = null;
+
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+      function update() {
+        var now = new Date();
+        var diff = end.getTime() - now.getTime();
+
+        if (diff <= 0) {
+          clearInterval(interval);
+          document.querySelector('.timer-blocks').innerHTML = '<span class="timer-done">Gewinnspiel beendet</span>';
+          return;
+        }
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor((diff % 86400000) / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('timer-d').textContent = pad(d);
+        document.getElementById('timer-h').textContent = pad(h);
+        document.getElementById('timer-m').textContent = pad(m);
+        document.getElementById('timer-s').textContent = pad(s);
+      }
+      update();
+      interval = setInterval(update, 1000);
+    })();
+
+    function toggleSection(id, linkEl) {
+      const sec = document.getElementById('sec-' + id);
+      const isOpen = sec.classList.contains('open');
+
+      document.querySelectorAll('.expand-section').forEach(s => s.classList.remove('open'));
+      document.querySelectorAll('.footer-links a').forEach(a => a.classList.remove('active'));
+
+      if (!isOpen) {
+        sec.classList.add('open');
+        if (linkEl) linkEl.classList.add('active');
+        setTimeout(() => sec.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+      }
+    }
+
+    function openSection(id) {
+      const linkEl = document.getElementById('link-' + id);
+      toggleSection(id, linkEl);
+    }
+  </script>
+
+</body>
+</html>
