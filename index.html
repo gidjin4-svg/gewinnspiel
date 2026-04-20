@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Teilnahmebedingungen – Gewinnspiel | Grow-Leif</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJJ44CC5K3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WJJ44CC5K3');
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Rum+Raisin&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -544,6 +552,9 @@
           var d2 = load();
           d2.clicks.push(new Date().toISOString());
           save(d2);
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'shop_click', { event_category: 'Gewinnspiel', event_label: 'Zum Growshop' });
+          }
         }
       });
 
